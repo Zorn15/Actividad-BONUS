@@ -152,20 +152,7 @@ Posibles optimizaciones derivadas de las métricas:
 - Investigar la causa del 5xx en `/api/error` (en este caso es simulado).
 - Si `http_requests_in_progress` crece monotónicamente, se podría escalar horizontalmente la API.
 
-## 10. Cumplimiento de la rúbrica
-
-| Criterio | Cumplido |
-|----------|----------|
-| API con 3+ endpoints + métricas 
-| docker-compose funcional con redes 
-| Prometheus configurado y haciendo scrape 
-| Dashboard Grafana con 3+ paneles 
-| Bonus: más de 5 endpoints 
-| Bonus: alertas
-| Bonus: histogramas + percentiles 
-| Bonus: README documentado
-
-## 11. Solución de problemas
+## 10. Solución de problemas
 
 - **El dashboard aparece vacío**: espera ~30 s para el primer scrape y genera tráfico con uno de los scripts.
 - **Puerto 3000/3001/9090 ocupado**: cambia el puerto `host` en `docker-compose.yml` (lado izquierdo del `:`).
