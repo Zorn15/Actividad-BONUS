@@ -4,8 +4,8 @@
 |-------|----------------------------------------------|
 | Nombre | Oscar Alejandro Morales Calderon |
 |Codigo  | 202220010601|
-| Repositorio | _URL del repo en GitHub_ |
-| Video | _URL del video (YouTube no listado / Drive)_ |
+| Repositorio | https://github.com/Zorn15/Actividad-BONUS.git |
+| Video | https://youtu.be/hVhyUs1cwD8 |
 
 ## 1. Descripción
 
