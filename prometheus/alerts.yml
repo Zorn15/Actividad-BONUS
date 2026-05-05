@@ -1,0 +1,30 @@
+groups:
+  - name: api-alerts
+    interval: 30s
+    rules:
+      - alert: APICaida
+        expr: up{job="monitoring-api"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "La API esta caida"
+          description: "El target {{ $labels.instance }} no responde desde hace mas de 30s."
+
+      - alert: LatenciaAltaP95
+        expr: histogram_quantile(0.95, sum by (le, endpoint) (rate(http_request_duration_seconds_bucket[2m]))) > 1.5
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latencia p95 alta en {{ $labels.endpoint }}"
+          description: "El p95 supera 1.5s en el endpoint {{ $labels.endpoint }} durante el ultimo minuto."
+
+      - alert: TasaErrores5xxAlta
+        expr: sum(rate(http_requests_total{status=~"5.."}[2m])) / sum(rate(http_requests_total[2m])) > 0.1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tasa de errores 5xx alta"
+          description: "Mas del 10% de los requests devuelven error 5xx en los ultimos 2 minutos."
